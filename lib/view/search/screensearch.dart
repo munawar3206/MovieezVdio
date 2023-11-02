@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tmdb/view/search/widget/searchIdle.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'package:tmdb/view/search/widget/searchIdle.dart';
 import 'package:tmdb/view/search/widget/serch_result.dart';
@@ -38,8 +39,8 @@ class ScreenSearch extends StatelessWidget {
                 SizedBox(
                   height: 15,
                 ),
-                // Expanded(child: SearchIdle())
-                Expanded(child: SeachResultWidget()),
+                Expanded(child: SearchIdle()),
+                // Expanded(child: SeachResultWidget()),
               ],
             ),
           ),

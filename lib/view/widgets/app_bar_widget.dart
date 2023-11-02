@@ -8,13 +8,13 @@ class AppBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 10,
           width: 20,
         ),
         Text(
           title,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
 
           // style: GoogleFonts.montserrat().copyWith(fontSize: 20),
         ),
@@ -26,7 +26,7 @@ class AppBarWidget extends StatelessWidget {
         const SizedBox(
           width: 20,
         ),
-        Icon(
+        const Icon(
           Icons.person,
           color: Colors.white,
         ),

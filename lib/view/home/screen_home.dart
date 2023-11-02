@@ -29,11 +29,56 @@ class ScreenHome extends StatelessWidget {
         ),
         body: ListView(
           children: [
+            // const SizedBox(
+            //   height: 20,
+            // ),
             const SizedBox(
-              height: 20,
+              height: 5,
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Card(
+                    child: SizedBox(
+                      height: 50,
+                      width: 70,
+                      child: Center(
+                        child: Text(
+                          "All",
+                          style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 50,
+                    width: 40,
+                    child: Center(
+                      child: Text(
+                        "Movies",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255)),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 50,
+                    width: 60,
+                    child: Center(
+                      child: Text(
+                        "TV shows",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255)),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             Stack(
               children: [
@@ -73,25 +118,25 @@ class ScreenHome extends StatelessWidget {
                     alignment: Alignment.topRight,
                     child: TextButton.icon(
                         onPressed: () {},
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.share,
                           color: Colors.white,
                         ),
-                        label: Text(
+                        label: const Text(
                           "Share",
                           style: TextStyle(color: Colors.white),
                         ))),
-                Positioned(
-                  top: 90,
-                  left: 135,
-                  child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.play_circle_outline_rounded,
-                        size: 75,
-                        color: Color.fromARGB(255, 255, 255, 255),
-                      )),
-                ),
+                // Positioned(
+                //   top: 90,
+                //   left: 135,
+                //   child: IconButton(
+                //       onPressed: () {},
+                //       icon: const Icon(
+                //         Icons.play_circle_outline_rounded,
+                //         size: 75,
+                //         color: Color.fromARGB(255, 255, 255, 255),
+                //       )),
+                // ),
               ],
             ),
             const Padding(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:tmdb/controller/download_provider.dart';
+import 'package:tmdb/controller/search_provider.dart';
 import 'package:tmdb/view/main_page/widgets/screen_main_page.dart';
 
 void main() {
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => DownloadScreenProvider(),
-        )
+        ),
+        ChangeNotifierProvider(create: (context) => SearchQueryProvider(),)
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -45,7 +45,7 @@ class _CenterSectionState extends State<CenterSection> {
   }
 
   initializeImages() async {
-    dynamic result = await apiCall(ApiEndPonts.trendingMovies);
+    dynamic result = await apiCall(ApiEndPoints.trendingMovies);
     result == null ? debugPrint("null") : debugPrint("not null");
     if (result is TMDBApiResponseModel) {
       // Check if the result is of the correct type

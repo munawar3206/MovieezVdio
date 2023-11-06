@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class comingsoonwidget extends StatelessWidget {
   const comingsoonwidget({
-    super.key,
+    super.key, required movieInfo,
   });
 
   @override

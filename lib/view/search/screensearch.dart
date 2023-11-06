@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tmdb/controller/search_provider.dart';
 import 'package:tmdb/view/search/widget/searchIdle.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'package:tmdb/view/search/widget/searchIdle.dart';
@@ -11,7 +13,9 @@ class ScreenSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    final searchQueryModel = Provider.of<SearchQueryProvider>(context);
+
+    return  SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50),
@@ -26,6 +30,9 @@ class ScreenSearch extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CupertinoSearchTextField(
+                  onChanged: (value) {
+                    searchQueryModel.updateQuery(value);
+                  },
                   prefixIcon: Icon(
                     CupertinoIcons.search,
                     color: Color.fromARGB(255, 103, 102, 102),
@@ -39,9 +46,11 @@ class ScreenSearch extends StatelessWidget {
                 SizedBox(
                   height: 15,
                 ),
-                Expanded(child: SearchIdle()),
-                // Expanded(child: SeachResultWidget()),
-              ],
+                Expanded(child: 
+                searchQueryModel.query.isEmpty?const SearchIdle():SearchResultWidget(apiQuery: searchQueryModel.query))
+              //   Expanded(child: SearchIdle()),
+              //  Expanded(child: SearchResultWidget(apiQuery: '',)),
+               ],
             ),
           ),
         ),

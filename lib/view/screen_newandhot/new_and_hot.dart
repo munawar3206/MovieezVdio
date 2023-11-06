@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tmdb/view/screen_newandhot/coming_soon.dart';
+import 'package:tmdb/view/screen_newandhot/coming_soon_widget.dart';
 import 'package:tmdb/view/screen_newandhot/everyone.dart';
 
 const image1 =
@@ -55,22 +56,18 @@ class ScreenNewAndHot extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              _buildComingSoon(),
-              _buildEveryoneWatching(),
+              _buildComingSoon(context),
+              _buildEveryonesWatching(),
             ],
           )),
     );
   }
+}
 
-  Widget _buildComingSoon() {
-    return ListView.builder(
-        itemCount: 10,
-        itemBuilder: (BuildContext context, index) => const comingsoonwidget());
-  }
+Widget _buildEveryonesWatching() {
+  return const everyonewatching();
+}
 
-  Widget _buildEveryoneWatching() {
-    return ListView.builder(
-        itemCount: 10,
-        itemBuilder: (BuildContext context, index) => const everyonewatching());
-  }
+Widget _buildComingSoon(BuildContext context) {
+  return const ComingSoonWidget();
 }

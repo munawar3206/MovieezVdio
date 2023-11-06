@@ -1,4 +1,3 @@
-// import 'package:netflix/model/movie_info_model.dart';
 import 'package:tmdb/model/movie_info.dart';
 
 class TMDBApiResponseModel{
@@ -11,7 +10,7 @@ class TMDBApiResponseModel{
     page=data['page'];
        results = (data['results'] as List)
         .map((item) => MovieInfoModel.fromjson(item))
-        .where((movieInfo) => movieInfo != null) // Filter out null values
+        .where((movieInfo) => movieInfo != null) 
         .toList();
     totalPages=data['total_pages'];
     totalResults=data['total_results'];

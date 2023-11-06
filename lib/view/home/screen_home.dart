@@ -1,9 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:tmdb/service/apiendpoint.dart';
 import 'package:tmdb/view/home/widgets/hori_title_card.dart';
 import 'package:tmdb/view/home/widgets/number_card.dart';
 import 'package:tmdb/view/search/widget/title.dart';
 import 'package:tmdb/view/widgets/app_bar_widget.dart';
+import 'package:tmdb/view/widgets/hori_title_card.dart';
 
 const imageUrl =
     "https://www.themoviedb.org/t/p/w355_and_h200_multi_faces/oFSQEG1lJTTISj3QKB7cJ9ANkFw.jpg";
@@ -13,6 +15,7 @@ List<String> imageUrl1 = [
   "https://www.themoviedb.org/t/p/w355_and_h200_multi_faces/zgQQF04u3OgNBJqClRNby1FPz9s.jpg",
   "https://www.themoviedb.org/t/p/w355_and_h200_multi_faces/1KgXxv6tHXOnakqYvMPvFwYKWiw.jpg"
 ];
+ValueNotifier<bool> scrollNotier = ValueNotifier(true);
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({super.key});
@@ -141,8 +144,9 @@ class ScreenHome extends StatelessWidget {
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
-              child: horititlecard(
+              child: HoriTitleCard(
                 title: "Adventure and Action Movies",
+                apiUrl: ApiEndPoints.moviepopular,
               ),
             ),
             const SizedBox(
@@ -150,7 +154,10 @@ class ScreenHome extends StatelessWidget {
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
-              child: horititlecard(title: "Drama Movies"),
+              child: HoriTitleCard(
+                title: "Drama Movies",
+                apiUrl: ApiEndPoints.trendingMovies,
+              ),
             ),
             const SizedBox(
               height: 10,
@@ -160,7 +167,9 @@ class ScreenHome extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: texttile(title: "Top Series"),
+                  child: texttile(
+                    title: "Top Series",
+                  ),
                 ),
                 const SizedBox(
                   height: 10,
@@ -189,8 +198,9 @@ class ScreenHome extends StatelessWidget {
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
-              child: horititlecard(
+              child: HoriTitleCard(
                 title: "Mystery and Triller Movie",
+                apiUrl: ApiEndPoints.tvtoprate,
               ),
             ),
             const SizedBox(
@@ -198,8 +208,9 @@ class ScreenHome extends StatelessWidget {
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
-              child: horititlecard(
+              child: HoriTitleCard(
                 title: "Watch in your languages",
+                apiUrl: ApiEndPoints.tvpopular,
               ),
             ),
             const SizedBox(
@@ -207,8 +218,9 @@ class ScreenHome extends StatelessWidget {
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
-              child: horititlecard(
+              child: HoriTitleCard(
                 title: "Horror Movie",
+                apiUrl: ApiEndPoints.searchmovie,
               ),
             ),
           ],

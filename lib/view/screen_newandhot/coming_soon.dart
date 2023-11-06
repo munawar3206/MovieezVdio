@@ -1,34 +1,43 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:tmdb/model/movie_info.dart';
+import 'package:tmdb/service/api_key.dart';
 
 class comingsoonwidget extends StatelessWidget {
+  final MovieInfoModel movieInfo;
+
   const comingsoonwidget({
-    super.key, required movieInfo,
+    super.key,
+    required this.movieInfo,
   });
 
   @override
   Widget build(BuildContext context) {
+    String imageUrl =
+        "https://image.tmdb.org/t/p/w500${movieInfo.posterPath}?api_key=$apikey";
     Size size = MediaQuery.of(context).size;
 
     return Row(
       children: [
-        const SizedBox(
+        SizedBox(
           width: 50,
           height: 500,
           child: Column(children: [
             Text(
-              "MAR",
-              style: TextStyle(fontSize: 18, color: Colors.grey),
+              fetchDate(movieInfo.releaseDate!),
+              style: const TextStyle(fontSize: 28, color: Colors.grey),
             ),
-            Text(
-              "20",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-            )
+            // Text(
+            //   fetchDate(movieInfo.releaseDate!),
+            //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+            // )
           ]),
         ),
         SizedBox(
           width: size.width - 50,
           height: 500,
-          child: const Column(
+          child: Column(
             children: [
               Stack(
                 children: [
@@ -37,53 +46,53 @@ class comingsoonwidget extends StatelessWidget {
                     height: 200,
                     child: Card(
                       child: Image(
-                        image: NetworkImage(
-                            "https://www.themoviedb.org/t/p/w355_and_h200_multi_faces/wSxRjSeBjYnlsHtAXTEA0BicsLz.jpg"),
+                        image: NetworkImage(imageUrl),
                         fit: BoxFit.cover,
                       ),
                     ),
                     // color: Colors.amberAccent,
                   ),
-                  Positioned(
+                  const Positioned(
                     bottom: 10,
-                    left: 275,
-                    child: CircleAvatar(
-                        backgroundColor: Colors.black54,
-                        child: Icon(
-                          Icons.volume_off,
-                          color: Colors.white,
-                        )),
+                    left: 300,
+                    child: Icon(
+                      CupertinoIcons.volume_mute,
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    ),
                   )
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                // mainAxisAlignment: MainAxisAlignment.,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Friendship Matters",
-                        style: TextStyle(
+                        movieInfo.originalTitle ?? " ",
+                        style: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.w100),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
-                      Text("Coming on Sunday"),
-                      SizedBox(
+                      Text.rich(
+                        TextSpan(text: "Coming On   ", children: [
+                          TextSpan(
+                              text: fetchDay(movieInfo.releaseDate!),
+                              style: const TextStyle(color: Colors.red, fontSize: 18))
+                        ]),
+                      ),
+                      const SizedBox(
                         height: 25,
                       ),
                       Text(
-                        "Friendship Matters",
-                        style: TextStyle(fontFamily: AutofillHints.addressCity),
+                        movieInfo.originalTitle ?? "",
+                        style: const TextStyle(fontFamily: AutofillHints.addressCity),
                       )
                     ],
                   ),
-                  SizedBox(
-                    width: 135,
-                  ),
-                  Column(
+                  const Column(
                     children: [
                       Icon(
                         Icons.notifications_none,
@@ -97,7 +106,7 @@ class comingsoonwidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Column(
                       children: [
@@ -116,21 +125,30 @@ class comingsoonwidget extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Expanded(
-                child: Text(
-                  "Get access to maintain your own custom personal lists, track what you've seen and search and filter for what to watch next—regardless if it's in theatres, on TV or available on popular streaming services like Netflix, Amazon Prime Video, Hotstar, Voot, and Jio Cinema.",
-                  style: TextStyle(
-                      fontFamily: AutofillHints.addressState,
-                      color: Colors.grey),
-                ),
+              Text(
+                movieInfo.overview,
+                style: const TextStyle(
+                    fontFamily: AutofillHints.addressState, color: Colors.grey),
               )
             ],
           ),
         ),
       ],
     );
+  }
+
+  String fetchDate(String date) {
+    DateTime dateInFormat = DateTime.parse(date);
+    final formatDate = (DateFormat.MMMMd().format(dateInFormat)).split(" ");
+    return "${formatDate.first.substring(0, 3)} \n${formatDate.last}";
+  }
+
+  String fetchDay(String date) {
+    DateTime dateInFormat = DateTime.parse(date);
+    final dayName = DateFormat('EEEE').format(dateInFormat);
+    return dayName;
   }
 }

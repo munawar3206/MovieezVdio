@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tmdb/view/home/screen_home.dart';
 
 class horicard extends StatelessWidget {
-  const horicard({
-    super.key,
-  });
+  final String imageUrlFromApi;
+  const horicard({super.key, required this.imageUrlFromApi});
 
   @override
   Widget build(BuildContext context) {

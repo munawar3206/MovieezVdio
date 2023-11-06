@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tmdb/view/screen_newandhot/coming_soon.dart';
+// import 'package:tmdb/view/screen_newandhot/coming_soon.dart';
 import 'package:tmdb/view/screen_newandhot/coming_soon_widget.dart';
-import 'package:tmdb/view/screen_newandhot/everyone.dart';
+// import 'package:tmdb/view/screen_newandhot/everyone.dart';
+import 'package:tmdb/view/screen_newandhot/everyone_widget.dart';
 
-const image1 =
-    "https://www.themoviedb.org/t/p/w355_and_h200_multi_faces/9XP8b9vpk7CPAZz58eBo18blaVh.jpg";
+// const image1 =
+//     "https://www.themoviedb.org/t/p/w355_and_h200_multi_faces/9XP8b9vpk7CPAZz58eBo18blaVh.jpg";
 
 class ScreenNewAndHot extends StatelessWidget {
   const ScreenNewAndHot({super.key});
@@ -65,7 +66,7 @@ class ScreenNewAndHot extends StatelessWidget {
 }
 
 Widget _buildEveryonesWatching() {
-  return const everyonewatching();
+  return  const EveryonesWatchingWidget();
 }
 
 Widget _buildComingSoon(BuildContext context) {

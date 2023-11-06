@@ -15,7 +15,7 @@ class ScreenSearch extends StatelessWidget {
   Widget build(BuildContext context) {
     final searchQueryModel = Provider.of<SearchQueryProvider>(context);
 
-    return  SafeArea(
+    return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50),
@@ -38,7 +38,7 @@ class ScreenSearch extends StatelessWidget {
                     color: Color.fromARGB(255, 103, 102, 102),
                   ),
                   suffixIcon: Icon(
-                    CupertinoIcons.mic,
+                    CupertinoIcons.clear_thick_circled,
                     color: Color.fromARGB(255, 76, 76, 76),
                   ),
                   backgroundColor: Color.fromARGB(255, 199, 198, 198),
@@ -46,11 +46,13 @@ class ScreenSearch extends StatelessWidget {
                 SizedBox(
                   height: 15,
                 ),
-                Expanded(child: 
-                searchQueryModel.query.isEmpty?const SearchIdle():SearchResultWidget(apiQuery: searchQueryModel.query))
-              //   Expanded(child: SearchIdle()),
-              //  Expanded(child: SearchResultWidget(apiQuery: '',)),
-               ],
+                Expanded(
+                    child: searchQueryModel.query.isEmpty
+                        ? const SearchIdle()
+                        : SearchResultWidget(apiQuery: searchQueryModel.query))
+                //   Expanded(child: SearchIdle()),
+                //  Expanded(child: SearchResultWidget(apiQuery: '',)),
+              ],
             ),
           ),
         ),

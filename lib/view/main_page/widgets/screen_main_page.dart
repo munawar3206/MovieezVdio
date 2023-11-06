@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tmdb/view/downloads/screen_downloads.dart';
+import 'package:tmdb/view/downloads/widget/download.dart';
+import 'package:tmdb/view/downloads/widget/screen_downloads.dart';
 // import 'package:tmdb/view/fastlaugh/screen_fastand_laugh.dart';
 import 'package:tmdb/view/home/screen_home.dart';
 import 'package:tmdb/view/main_page/widgets/bottom_bar.dart';
@@ -12,7 +13,7 @@ class ScreenMainPage extends StatelessWidget {
     ScreenHome(),
     ScreenNewAndHot(),
   
-    ScreenDownload(),
+    DownloadScreen(),
     ScreenSearch(),
   ];
 

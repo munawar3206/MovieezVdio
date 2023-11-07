@@ -46,10 +46,12 @@ class Everyonewatching extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    movieInfo.originalTitle ?? "No  Title Found",
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.w300),
+                  Expanded(
+                    child: Text(
+                      movieInfo.originalTitle ?? "No  Title Found",
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.w300),
+                    ),
                   ),
                   IconButton(
                       onPressed: () {},
@@ -61,7 +63,7 @@ class Everyonewatching extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              Text(movieInfo.overview),
+              Expanded(child: Text(movieInfo.overview)),
             ],
           ),
         ),

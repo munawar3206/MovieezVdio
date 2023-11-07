@@ -1,10 +1,10 @@
-
 import 'dart:math';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:tmdb/controller/download_provider.dart';
 import 'package:tmdb/model/movie_info.dart';
 import 'package:tmdb/model/tmdb_api_response.dart';
+import 'package:tmdb/service/api_key.dart';
 import 'package:tmdb/service/apiendpoint.dart';
 
 import '../../../service/base_client.dart';
@@ -19,11 +19,13 @@ class SmartDownloads extends StatelessWidget {
     return const Row(
       children: [
         Icon(
-          Icons.settings,
+          Icons.download_rounded,
           color: Colors.white,
         ),
-    SizedBox(width: 5,),
-        Text("Smart Downloads")
+        SizedBox(
+          width: 5,
+        ),
+        Text(" Downloads")
       ],
     );
   }
@@ -41,32 +43,12 @@ class _CenterSectionState extends State<CenterSection> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    initializeImages();
-  }
-
-  initializeImages() async {
-    dynamic result = await apiCall(ApiEndPoints.trendingMovies);
-    result == null ? debugPrint("null") : debugPrint("not null");
-    if (result is TMDBApiResponseModel) {
-      // Check if the result is of the correct type
-      List newImageList = result.results.map((MovieInfoModel movieInfo) {
-        if (movieInfo.posterPath == null) {
-          return null;
-        }
-
-        String imageUrl =
-            'https://image.tmdb.org/t/p/w500${movieInfo.posterPath}?api_key=b2dee3b855c4ea705ff5dda3c0201768';
-        return imageUrl;
-      }).toList();
-
-       Provider.of<DownloadScreenProvider>(context, listen: false)
-           .updateImageList(newImageList);
-    }
+    Provider.of<DownloadScreenProvider>(context, listen: false)
+        .initializeImage();
   }
 
   @override
   Widget build(BuildContext context) {
-     var downloadProvider = Provider.of<DownloadScreenProvider>(context);
     final Size size = MediaQuery.of(context).size;
     return Column(
       children: [
@@ -76,44 +58,62 @@ class _CenterSectionState extends State<CenterSection> {
           style: TextStyle(
               color: Colors.white, fontSize: 23, fontWeight: FontWeight.bold),
         ),
-   SizedBox(height: 10,),
-        const Text(
-          "We wil download a personalised selection of\nmovies and shows for you, so there's\nalways something to watch on your\ndevice",
+        SizedBox(
+          height: 10,
+        ),
+        const Text.rich(
+          TextSpan(text: "No downloads !  ", children: [
+            TextSpan(text: "Download Now.", style: TextStyle(color: Colors.red))
+          ]),
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.grey, fontSize: 16),
         ),
-        SizedBox(height: 10,),
+        SizedBox(
+          height: 10,
+        ),
         SizedBox(
           width: size.width,
           height: size.width,
-          child: Stack(
-            alignment: Alignment.center,
-            children: downloadProvider.imageList.length < 3
-                ? []
-                : [
-                    CircleAvatar(
-                      radius: size.width * 0.37,
-                      backgroundColor: Colors.grey.withOpacity(0.5),
-                    ),
-                    DownloadsImageWidget(
-                      imageList: downloadProvider.imageList[0],
-                      margin: const EdgeInsets.only(left: 170, top: 38),
-                      angle: 25,
-                      size: Size(size.width * 0.35, size.width * 0.55),
-                    ),
-                    DownloadsImageWidget(
-                      imageList: downloadProvider.imageList[1],
-                      margin: const EdgeInsets.only(right: 170, top: 38),
-                      angle: -25,
-                      size: Size(size.width * 0.35, size.width * 0.55),
-                    ),
-                    DownloadsImageWidget(
-                      imageList: downloadProvider.imageList[2],
-                      margin: const EdgeInsets.only(bottom: 25, top: 38),
-                      size: Size(size.width * 0.4, size.width * 0.6),
-                      radius: 8,
-                    ),
-                  ],
+          child: Consumer<DownloadScreenProvider>(
+            builder: (context, value, child) {
+              if (value.isLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (value.imagelist.isEmpty) {
+                return const Text("No data available");
+              } else {
+                return Stack(
+                  alignment: Alignment.center,
+                  children: value.imagelist.length < 3
+                      ? []
+                      : [
+                          CircleAvatar(
+                            radius: size.width * 0.37,
+                            backgroundColor: Colors.grey.withOpacity(0.5),
+                          ),
+                          DownloadsImageWidget(
+                            imageList: value.imagelist[0],
+                            margin: const EdgeInsets.only(left: 170, top: 38),
+                            angle: 25,
+                            size: Size(size.width * 0.35, size.width * 0.55),
+                          ),
+                          DownloadsImageWidget(
+                            imageList: value.imagelist[1],
+                            margin: const EdgeInsets.only(right: 170, top: 38),
+                            angle: -25,
+                            size: Size(size.width * 0.35, size.width * 0.55),
+                          ),
+                          DownloadsImageWidget(
+                            imageList: value.imagelist[2],
+                            margin: const EdgeInsets.only(bottom: 25, top: 38),
+                            size: Size(size.width * 0.4, size.width * 0.6),
+                            radius: 8,
+                          ),
+                        ],
+                );
+              }
+            },
           ),
         ),
       ],
@@ -129,36 +129,29 @@ class BottomSection extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          width: double.infinity,
+          width: 450,
           child: MaterialButton(
-            color: Colors.blue,
+            color: Color.fromARGB(255, 255, 255, 255),
             onPressed: () {},
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
-              child: Text(
-                "Setup",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
-              ),
+            child: const Text(
+              "Downloads",
+              style: TextStyle(
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold),
             ),
           ),
         ),
-        SizedBox(height: 10,),
-        MaterialButton(
-          color: Colors.white,
-          onPressed: () {},
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
-            child: Text(
-              "See what you can download",
+        SizedBox(
+          width: 450,
+          child: MaterialButton(
+            color: Color.fromARGB(255, 0, 47, 235),
+            onPressed: () {},
+            child: const Text(
+              "Top Suggestions For you",
               style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  fontSize: 15,
                   fontWeight: FontWeight.bold),
             ),
           ),

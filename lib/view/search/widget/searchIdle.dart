@@ -1,17 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tmdb/controller/search_idle_provider.dart';
 import 'package:tmdb/model/movie_info.dart';
 import 'package:tmdb/service/api_key.dart';
 import 'package:tmdb/service/apiendpoint.dart';
 import 'package:tmdb/service/base_client.dart';
+import 'package:tmdb/service/searchidle_service.dart';
 // import 'package:tmdb/view/search/widget/serch_result.dart';
 import 'package:tmdb/view/search/widget/title.dart';
 
-const imageUrl =
-    "https://www.themoviedb.org/t/p/w220_and_h330_face/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg";
+// const imageUrl =
+//     "https://www.themoviedb.org/t/p/w220_and_h330_face/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg";
 
 @override
-class SearchIdle extends StatelessWidget {
+class SearchIdle extends StatefulWidget {
   const SearchIdle({super.key});
+
+  @override
+  State<SearchIdle> createState() => _SearchIdleState();
+}
+
+class _SearchIdleState extends State<SearchIdle> {
+  @override
+  void initstate() {
+    super.initState();
+    Provider.of<SearchidleProvider>(context, listen: false)
+        .fetchSearchIDLMovies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,40 +94,32 @@ class SearchIdle extends StatelessWidget {
           height: 30,
         ),
         Expanded(
-          child: FutureBuilder(
-              future: apiCall(ApiEndPoints.trendingMovies),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  const Center(
-                    child: Column(
-                      children: [
-                        CircularProgressIndicator(
-                          color: Colors.blue,
-                        ),
-                        Text('Please wait'),
-                      ],
-                    ),
-                  );
-                }
-                if (snapshot.data == null) {
-                  return const Text("No data found");
-                }
-                return GridView.count(
-                  shrinkWrap: true,
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 15,
-                  crossAxisSpacing: 15,
-                  childAspectRatio: 1 / 1.5,
-                  children: List.generate(
-                    20,
-                    (index) {
-                      return TopSearchtile(
-                        movieInfo: snapshot.data.results[index],
-                      );
-                    },
-                  ),
-                );
-              }),
+          child: Consumer<SearchidleProvider>(
+              // future: apiCall(ApiEndPoints.trendingMovies),
+              builder: (context, value, child) {
+            if (value.isLoading) {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: Colors.blue,
+                ),
+              );
+            } else if (value.trendingMovies.isEmpty) {
+              return const Text("No data Available");
+            }
+
+            return GridView.count(
+              shrinkWrap: true,
+              crossAxisCount: 3,
+              mainAxisSpacing: 15,
+              crossAxisSpacing: 15,
+              childAspectRatio: 1 / 1.5,
+              children: List.generate(
+                value.trendingMovies.length,
+                (index) =>
+                    TopSearchtile(movieInfo: value.trendingMovies[index]),
+              ),
+            );
+          }),
         )
       ],
     );
@@ -127,18 +134,10 @@ class TopSearchtile extends StatelessWidget {
     String url =
         'https://image.tmdb.org/t/p/w500${movieInfo.posterPath}?api_key=$apikey';
 
-    // final screenWidth = MediaQuery.of(context).size.width;
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(image: NetworkImage(url), fit: BoxFit.cover),
       ),
-      // child: Center(
-      //   child: Text(
-      //     movieInfo.title ?? "",
-      //     style: TextStyle(
-      //         color: Color.fromARGB(255, 255, 255, 255), fontSize: 20),
-      //   ),
-      // ),
     );
   }
 }

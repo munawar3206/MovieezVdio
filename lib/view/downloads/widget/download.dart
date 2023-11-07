@@ -20,13 +20,28 @@ class DownloadScreen extends StatelessWidget {
               child: AppBarWidget(
                 title: "Downloads",
               )),
-          body: ListView.separated(
-              padding: const EdgeInsets.all(10),
-              itemBuilder: (context, index) => widgetList[index],
-              separatorBuilder: (context, index) => const SizedBox(
-                    height: 20,
-                  ),
-              itemCount: widgetList.length)),
+          body: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                stops: [0.1, 0.5, 0.7, 0.9],
+                colors: [
+                  Color.fromARGB(255, 0, 0, 0) ?? Colors.blue,
+                  Color.fromARGB(255, 9, 3, 43) ?? Colors.blue,
+                  Color.fromARGB(255, 1, 4, 68) ?? Colors.blue,
+                  Color.fromARGB(255, 0, 0, 0) ?? Colors.blue,
+                ],
+              ),
+            ),
+            child: ListView.separated(
+                padding: const EdgeInsets.all(10),
+                itemBuilder: (context, index) => widgetList[index],
+                separatorBuilder: (context, index) => const SizedBox(
+                      height: 20,
+                    ),
+                itemCount: widgetList.length),
+          )),
     );
   }
 }

@@ -18,7 +18,16 @@ class ScreenNewAndHot extends StatelessWidget {
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(73),
             child: AppBar(
-              title: const Text("New & Hot"),
+              title: const Text.rich(TextSpan(text: "New  ", children: [
+                TextSpan(
+                    text: "&  ",
+                    style: TextStyle(fontSize: 15),
+                    children: [
+                      TextSpan(
+                          text: "Hot",
+                          style: TextStyle(color: Colors.red, fontSize: 23))
+                    ])
+              ])),
               elevation: 0,
               actions: const [
                 Icon(
@@ -55,18 +64,33 @@ class ScreenNewAndHot extends StatelessWidget {
                   ]),
             ),
           ),
-          body: TabBarView(
-            children: [
-              _buildComingSoon(context),
-              _buildEveryonesWatching(),
-            ],
+          body: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                stops: [0.1, 0.5, 0.7, 0.9],
+                colors: [
+                  Color.fromARGB(255, 0, 0, 0) ?? Colors.blue,
+                  Color.fromARGB(255, 9, 3, 43) ?? Colors.blue,
+                  Color.fromARGB(255, 1, 4, 68) ?? Colors.blue,
+                  Color.fromARGB(255, 0, 0, 0) ?? Colors.blue,
+                ],
+              ),
+            ),
+            child: TabBarView(
+              children: [
+                _buildComingSoon(context),
+                _buildEveryonesWatching(),
+              ],
+            ),
           )),
     );
   }
 }
 
 Widget _buildEveryonesWatching() {
-  return  const EveryonesWatchingWidget();
+  return const EveryonesWatchingWidget();
 }
 
 Widget _buildComingSoon(BuildContext context) {

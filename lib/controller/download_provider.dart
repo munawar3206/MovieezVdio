@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:tmdb/service/download_service.dart';
 
 class DownloadScreenProvider extends ChangeNotifier{
-  List imageList=[];
+ List imagelist =[];
+bool isLoading =true;
 
+TrandingMovieInitializeProvider(){
+  initializeImage();
+ }
 
-  void updateImageList(newList){
-    imageList=newList;
-    notifyListeners();
-  }
+void initializeImage()async{
+  imagelist =await DownloadsServices().getTrendingMovies();
+  isLoading=false;
+  notifyListeners();
+}
+
 }

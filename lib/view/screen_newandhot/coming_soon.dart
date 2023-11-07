@@ -26,7 +26,8 @@ class comingsoonwidget extends StatelessWidget {
           child: Column(children: [
             Text(
               fetchDate(movieInfo.releaseDate!),
-              style: const TextStyle(fontSize: 28, color: Colors.grey),
+              style: const TextStyle(
+                  fontSize: 28, color: Color.fromARGB(255, 255, 255, 255)),
             ),
             // Text(
             //   fetchDate(movieInfo.releaseDate!),
@@ -54,16 +55,16 @@ class comingsoonwidget extends StatelessWidget {
                   ),
                   const Positioned(
                     bottom: 10,
-                    left: 300,
+                    left: 280,
                     child: Icon(
-                      CupertinoIcons.volume_mute,
+                      CupertinoIcons.volume_off,
                       color: Color.fromARGB(255, 255, 255, 255),
                     ),
                   )
                 ],
               ),
               Row(
-                // mainAxisAlignment: MainAxisAlignment.,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,7 +81,8 @@ class comingsoonwidget extends StatelessWidget {
                         TextSpan(text: "Coming On   ", children: [
                           TextSpan(
                               text: fetchDay(movieInfo.releaseDate!),
-                              style: const TextStyle(color: Colors.red, fontSize: 18))
+                              style: const TextStyle(
+                                  color: Colors.red, fontSize: 18))
                         ]),
                       ),
                       const SizedBox(
@@ -88,24 +90,25 @@ class comingsoonwidget extends StatelessWidget {
                       ),
                       Text(
                         movieInfo.originalTitle ?? "",
-                        style: const TextStyle(fontFamily: AutofillHints.addressCity),
+                        style: const TextStyle(
+                            fontFamily: AutofillHints.addressCity),
                       )
                     ],
                   ),
-                  const Column(
-                    children: [
-                      Icon(
-                        Icons.notifications_none,
-                        color: Colors.white,
-                      ),
-                      Text(
-                        "Remind Me",
-                        style: TextStyle(
-                          fontSize: 10,
-                        ),
-                      ),
-                    ],
-                  ),
+                  // const Column(
+                  //   children: [
+                  //     Icon(
+                  //       Icons.notifications_none,
+                  //       color: Colors.white,
+                  //     ),
+                  //     Text(
+                  //       "Remind Me",
+                  //       style: TextStyle(
+                  //         fontSize: 10,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                   const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Column(

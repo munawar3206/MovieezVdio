@@ -8,10 +8,11 @@ class horicard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 220,
-      height: 120,
+      width: 200,
+      // height: 20,
       decoration: BoxDecoration(
-          image: const DecorationImage(image: NetworkImage(imageUrl)),
+          image: DecorationImage(
+              image: NetworkImage(imageUrlFromApi), fit: BoxFit.cover),
           borderRadius: BorderRadius.circular(10)),
     );
   }

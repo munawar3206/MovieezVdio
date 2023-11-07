@@ -6,15 +6,6 @@ class MovieInfoModel{
    String?releaseDate;
    String? originalTitle;
    String overview = "";
-   
-
-
-
-
-
-
-
-
 
 
    MovieInfoModel({

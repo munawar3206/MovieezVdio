@@ -7,8 +7,8 @@ import 'package:tmdb/controller/new_and_hot_provider.dart';
 import 'package:tmdb/controller/search_idle_provider.dart';
 import 'package:tmdb/controller/search_provider.dart';
 import 'package:tmdb/controller/search_result_provider.dart';
+import 'package:tmdb/controller/tvtoperate_provider.dart';
 import 'package:tmdb/splash.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -38,6 +38,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => InternetConnectivityProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => TvTopRateProvider(),
         ),
       ],
       child: MaterialApp(

@@ -163,8 +163,8 @@ class _ScreenHomeState extends State<ScreenHome> {
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: MainTitleCard(
-                  title: "Popular Movie",
-                  apiUrl: ApiEndPoints.moviepopular,
+                  title: "Tv Popular",
+                  apiUrl: ApiEndPoints.tvpopular,
                 ),
               ),
               const SizedBox(height: 10),
@@ -191,7 +191,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                 padding: EdgeInsets.all(8.0),
                 child: MainTitleCard(
                   title: "Tv Shows",
-                  apiUrl: ApiEndPoints.tvtoprate,
+                  apiUrl: ApiEndPoints.trendingMovies,
                 ),
               ),
               const SizedBox(height: 10),

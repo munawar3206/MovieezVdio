@@ -5,18 +5,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
-class InternetConnectivityServices{
-
-
+class InternetConnectivityServices {
   late StreamSubscription subscription;
 
   var isDeviceConnected = false;
 
   bool isAlertSet = false;
-  
-  
 
-   getConnectivity(BuildContext context) {
+  getConnectivity(BuildContext context) {
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) async {
@@ -24,9 +20,8 @@ class InternetConnectivityServices{
 
       if (!isDeviceConnected && isAlertSet == false) {
         showDialogBox(context);
-        
-          isAlertSet = true;
-       
+
+        isAlertSet = true;
       }
     });
   }
@@ -36,21 +31,20 @@ class InternetConnectivityServices{
       context: context,
       builder: (context) => CupertinoAlertDialog(
         title: const Text("No Connection"),
-        content: const Text("Please check your internet connectivity"),
+        content: const Text("Please check your internet connection"),
         actions: <Widget>[
           TextButton(
               onPressed: () async {
                 Navigator.pop(context, 'Cancel');
-                
-                  isAlertSet = false;
-              
+
+                isAlertSet = false;
+
                 isDeviceConnected =
                     await InternetConnectionChecker().hasConnection;
                 if (!isDeviceConnected) {
                   showDialogBox(context);
-                
-                    isAlertSet = true;
-                  
+
+                  isAlertSet = true;
                 }
               },
               child: const Text('OK'))

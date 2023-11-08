@@ -12,7 +12,7 @@ class bigScreen extends StatelessWidget {
       children: [
         Stack(
           children: [
-            Container(
+            SizedBox(
               height: 200,
               width: double.infinity,
               child: Image.network(
@@ -21,21 +21,21 @@ class bigScreen extends StatelessWidget {
               ),
             ),
             Positioned(
-                left: 350,
+                left: 330,
                 child: IconButton(
                     onPressed: () {},
-                    icon: Icon(CupertinoIcons.volume_off,
+                    icon: const Icon(CupertinoIcons.volume_off,
                         color: Color.fromARGB(255, 255, 255, 255)))),
             Positioned(
               top: 30,
-              left: 350,
+              left: 330,
               child: IconButton(
                   onPressed: () {},
-                  icon: Icon(CupertinoIcons.captions_bubble_fill,
+                  icon: const Icon(CupertinoIcons.captions_bubble_fill,
                       color: Color.fromARGB(255, 255, 255, 255))),
             ),
             Positioned(
-              left: 360,
+              left: 340,
               bottom: 10,
               child: Container(
                   decoration: BoxDecoration(
@@ -44,7 +44,7 @@ class bigScreen extends StatelessWidget {
                   // color: Color.fromARGB(181, 0, 0, 0),
                   height: 15,
                   width: 25,
-                  child: Text("  2:24")),
+                  child: const Text("  2:24")),
             )
           ],
         ),

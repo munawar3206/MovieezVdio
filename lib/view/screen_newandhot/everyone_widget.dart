@@ -21,7 +21,10 @@ class _EveryonesWatchingWidgetState extends State<EveryonesWatchingWidget> {
     super.initState();
     Provider.of<NewAndHotProvider>(context, listen: false)
         .fetchEveryoneWatchingMovies();
-     Provider.of<InternetConnectivityProvider>(context,listen: false).getInternetConnectivity(context);
+    // Provider.of<NewAndHotProvider>(context, listen: false)
+    //     .fetchEveryoneWatchingMovies();
+    Provider.of<InternetConnectivityProvider>(context, listen: false)
+        .getInternetConnectivity(context);
   }
 
   @override
@@ -32,14 +35,14 @@ class _EveryonesWatchingWidgetState extends State<EveryonesWatchingWidget> {
           return const Center(
             child: CircularProgressIndicator(),
           );
-        } else if (provider.moviepopular.isEmpty) {
+        } else if (provider.upcomingMovies.isEmpty) {
           return const Text("No data available");
         }
         return ListView.builder(
           shrinkWrap: true,
           itemCount: 20,
           itemBuilder: (context, index) => Everyonewatching(
-            movieInfo: provider.moviepopular[index],
+            movieInfo: provider.upcomingMovies[index],
           ),
         );
       },

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:tmdb/controller/download_provider.dart';
-// import 'package:tmdb/controller/homeScro_provider.dart';
 import 'package:tmdb/controller/internet_connectivity.dart';
 import 'package:tmdb/controller/new_and_hot_provider.dart';
 import 'package:tmdb/controller/search_idle_provider.dart';
 import 'package:tmdb/controller/search_provider.dart';
 import 'package:tmdb/controller/search_result_provider.dart';
-import 'package:tmdb/view/main_page/widgets/screen_main_page.dart';
+import 'package:tmdb/splash.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
               bodyLarge: TextStyle(color: Colors.white),
               bodyMedium: TextStyle(color: Colors.white)),
         ),
-        home: ScreenMainPage(),
+        home: SplashScreen(),
       ),
     );
   }

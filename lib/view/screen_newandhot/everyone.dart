@@ -10,10 +10,13 @@ class Everyonewatching extends StatelessWidget {
     String imageUrl =
         'https://image.tmdb.org/t/p/w500${movieInfo.posterPath}?api_key=$apikey';
     return Column(
+      
       children: [
+        
         const SizedBox(
           height: 10,
         ),
+       
         SizedBox(
           height: 200,
           width: double.infinity,
@@ -63,7 +66,7 @@ class Everyonewatching extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              Expanded(child: Text(movieInfo.overview)),
+              Text(movieInfo.overview),
             ],
           ),
         ),

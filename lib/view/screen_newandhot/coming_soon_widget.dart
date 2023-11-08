@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tmdb/controller/internet_connectivity.dart';
 import 'package:tmdb/controller/new_and_hot_provider.dart';
 import 'package:tmdb/service/apiendpoint.dart';
 import 'package:tmdb/service/base_client.dart';
@@ -20,7 +21,7 @@ class _ComingSoonWidgetState extends State<ComingSoonWidget> {
     super.initState();
     Provider.of<NewAndHotProvider>(context, listen: false)
         .fetchComingSoonMovies();
-    // Provider.of<InternetConnectivityProvider>(context,listen: false).getInternetConnectivity(context);
+     Provider.of<InternetConnectivityProvider>(context,listen: false).getInternetConnectivity(context);
   }
 
   @override

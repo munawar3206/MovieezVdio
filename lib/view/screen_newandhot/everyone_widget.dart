@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tmdb/controller/internet_connectivity.dart';
 import 'package:tmdb/controller/new_and_hot_provider.dart';
-import 'package:tmdb/service/apiendpoint.dart';
-import 'package:tmdb/service/base_client.dart';
 import 'package:tmdb/view/screen_newandhot/everyone.dart';
 
 class EveryonesWatchingWidget extends StatefulWidget {
@@ -22,7 +21,7 @@ class _EveryonesWatchingWidgetState extends State<EveryonesWatchingWidget> {
     super.initState();
     Provider.of<NewAndHotProvider>(context, listen: false)
         .fetchEveryoneWatchingMovies();
-    // Provider.of<InternetConnectivityProvider>(context,listen: false).getInternetConnectivity(context);
+     Provider.of<InternetConnectivityProvider>(context,listen: false).getInternetConnectivity(context);
   }
 
   @override

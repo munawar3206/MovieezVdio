@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tmdb/controller/internet_connectivity.dart';
 import 'package:tmdb/controller/search_result_provider.dart';
 import 'package:tmdb/model/movie_info.dart';
 // import 'package:tmdb/model/tmdb_api_response.dart';
@@ -21,7 +22,7 @@ class _SearchResultWidgetState extends State<SearchResultWidget> {
   @override
   void initState() {
     super.initState();
-    // Provider.of<InternetConnectivityProvider>(context,listen: false).getInternetConnectivity(context);
+    Provider.of<InternetConnectivityProvider>(context,listen: false).getInternetConnectivity(context);
   }
 
   @override

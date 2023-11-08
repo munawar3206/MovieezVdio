@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:tmdb/controller/download_provider.dart';
+import 'package:tmdb/controller/internet_connectivity.dart';
 import 'package:tmdb/model/movie_info.dart';
 import 'package:tmdb/model/tmdb_api_response.dart';
 import 'package:tmdb/service/api_key.dart';
@@ -45,6 +46,8 @@ class _CenterSectionState extends State<CenterSection> {
     super.initState();
     Provider.of<DownloadScreenProvider>(context, listen: false)
         .initializeImage();
+    Provider.of<InternetConnectivityProvider>(context, listen: false)
+        .getInternetConnectivity(context);
   }
 
   @override
@@ -90,11 +93,18 @@ class _CenterSectionState extends State<CenterSection> {
                       : [
                           CircleAvatar(
                             radius: size.width * 0.37,
-                            backgroundColor: Colors.grey.withOpacity(0.5),
+                            backgroundColor: const Color.fromARGB(255, 0, 0, 0)
+                                .withOpacity(0.5),
                           ),
                           DownloadsImageWidget(
                             imageList: value.imagelist[0],
                             margin: const EdgeInsets.only(left: 170, top: 38),
+                            angle: 25,
+                            size: Size(size.width * 0.35, size.width * 0.55),
+                          ),
+                          DownloadsImageWidget(
+                            imageList: value.imagelist[5],
+                            margin: const EdgeInsets.only(left: 170, top: 178),
                             angle: 25,
                             size: Size(size.width * 0.35, size.width * 0.55),
                           ),
@@ -105,8 +115,20 @@ class _CenterSectionState extends State<CenterSection> {
                             size: Size(size.width * 0.35, size.width * 0.55),
                           ),
                           DownloadsImageWidget(
+                            imageList: value.imagelist[4],
+                            margin: const EdgeInsets.only(right: 170, top: 178),
+                            angle: -25,
+                            size: Size(size.width * 0.35, size.width * 0.55),
+                          ),
+                          DownloadsImageWidget(
                             imageList: value.imagelist[2],
                             margin: const EdgeInsets.only(bottom: 25, top: 38),
+                            size: Size(size.width * 0.4, size.width * 0.6),
+                            radius: 8,
+                          ),
+                          DownloadsImageWidget(
+                            imageList: value.imagelist[3],
+                            margin: const EdgeInsets.only(bottom: 25, top: 178),
                             size: Size(size.width * 0.4, size.width * 0.6),
                             radius: 8,
                           ),

@@ -1,31 +1,25 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tmdb/controller/internet_connectivity.dart';
 import 'package:tmdb/controller/search_idle_provider.dart';
 import 'package:tmdb/model/movie_info.dart';
-import 'package:tmdb/service/api_key.dart';
-import 'package:tmdb/service/apiendpoint.dart';
-import 'package:tmdb/service/base_client.dart';
-import 'package:tmdb/service/searchidle_service.dart';
-// import 'package:tmdb/view/search/widget/serch_result.dart';
-import 'package:tmdb/view/search/widget/title.dart';
+import 'package:tmdb/view/widgets/mainTitle.dart';
 
-// const imageUrl =
-//     "https://www.themoviedb.org/t/p/w220_and_h330_face/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg";
-
-@override
-class SearchIdle extends StatefulWidget {
-  const SearchIdle({super.key});
+class SearchIdleWidget extends StatefulWidget {
+  const SearchIdleWidget({super.key});
 
   @override
-  State<SearchIdle> createState() => _SearchIdleState();
+  State<SearchIdleWidget> createState() => _SearchIdleWidgetState();
 }
 
-class _SearchIdleState extends State<SearchIdle> {
+class _SearchIdleWidgetState extends State<SearchIdleWidget> {
   @override
-  void initstate() {
+  void initState() {
     super.initState();
     Provider.of<SearchidleProvider>(context, listen: false)
         .fetchSearchIDLMovies();
+     Provider.of<InternetConnectivityProvider>(context,listen: false).getInternetConnectivity(context);
   }
 
   @override
@@ -33,111 +27,59 @@ class _SearchIdleState extends State<SearchIdle> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        texttile(title: "Today Top Searches"),
-        const SizedBox(
-          height: 10,
+        const MainTitle(
+          title: "Top Searches",
         ),
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Card(
-              child: SizedBox(
-                height: 50,
-                width: 80,
-                child: Center(
-                  child: Text(
-                    "Trending",
-                    style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: SizedBox(
-                height: 50,
-                width: 80,
-                child: Center(
-                  child: Text(
-                    "Hollywood",
-                    style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: SizedBox(
-                height: 50,
-                width: 80,
-                child: Center(
-                  child: Text(
-                    "Cartoon",
-                    style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: SizedBox(
-                height: 50,
-                width: 80,
-                child: Center(
-                  child: Text(
-                    "Explore More",
-                    style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 30,
+        SizedBox(
+          height: 20,
         ),
         Expanded(
           child: Consumer<SearchidleProvider>(
-              // future: apiCall(ApiEndPoints.trendingMovies),
-              builder: (context, value, child) {
-            if (value.isLoading) {
-              return Center(
-                child: CircularProgressIndicator(
-                  color: Colors.blue,
+            builder: (context, value, child) {
+              if (value.isLoading) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (value.trendingMovies.isEmpty) {
+                return const Text("NO data available");
+              }
+              return GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 25.0,
+                  mainAxisSpacing: 35.0,
                 ),
+                itemBuilder: (context, index) =>
+                    TopSearchItemTile(movieInfo: value.trendingMovies[index]),
+                itemCount: value.trendingMovies.length,
               );
-            } else if (value.trendingMovies.isEmpty) {
-              return const Text("No data Available");
-            }
-
-            return GridView.count(
-              shrinkWrap: true,
-              crossAxisCount: 3,
-              mainAxisSpacing: 15,
-              crossAxisSpacing: 15,
-              childAspectRatio: 1 / 1.5,
-              children: List.generate(
-                value.trendingMovies.length,
-                (index) =>
-                    TopSearchtile(movieInfo: value.trendingMovies[index]),
-              ),
-            );
-          }),
+            },
+          ),
         )
       ],
     );
   }
 }
 
-class TopSearchtile extends StatelessWidget {
-  const TopSearchtile({super.key, required this.movieInfo});
+class TopSearchItemTile extends StatelessWidget {
   final MovieInfoModel movieInfo;
+  const TopSearchItemTile({super.key, required this.movieInfo});
+
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     String url =
-        'https://image.tmdb.org/t/p/w500${movieInfo.posterPath}?api_key=$apikey';
+        'https://image.tmdb.org/t/p/w500${movieInfo.posterPath}?api_key=b2dee3b855c4ea705ff5dda3c0201768';
 
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(image: NetworkImage(url), fit: BoxFit.cover),
-      ),
+    return Row(
+      children: [
+        Container(
+          width: screenWidth * 0.25,
+          height: 135,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              image:
+                  DecorationImage(fit: BoxFit.cover, image: NetworkImage(url))),
+        ),
+      ],
     );
   }
 }

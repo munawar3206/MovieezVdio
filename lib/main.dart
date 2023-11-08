@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:tmdb/controller/download_provider.dart';
+// import 'package:tmdb/controller/homeScro_provider.dart';
+import 'package:tmdb/controller/internet_connectivity.dart';
 import 'package:tmdb/controller/new_and_hot_provider.dart';
 import 'package:tmdb/controller/search_idle_provider.dart';
 import 'package:tmdb/controller/search_provider.dart';
@@ -34,7 +36,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => NewAndHotProvider(),
         ),
-        
+        ChangeNotifierProvider(
+          create: (context) => InternetConnectivityProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

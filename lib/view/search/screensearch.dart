@@ -62,7 +62,7 @@ class ScreenSearch extends StatelessWidget {
                   ),
                   Expanded(
                       child: searchQueryModel.query.isEmpty
-                          ? const SearchIdle()
+                          ? const SearchIdleWidget()
                           : SearchResultWidget(
                               apiQuery: searchQueryModel.query))
                   //   Expanded(child: SearchIdle()),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:tmdb/view/screen_newandhot/coming_soon.dart';
+
 import 'package:tmdb/view/screen_newandhot/coming_soon_widget.dart';
-// import 'package:tmdb/view/screen_newandhot/everyone.dart';
+
 import 'package:tmdb/view/screen_newandhot/everyone_widget.dart';
 
 
@@ -69,10 +69,10 @@ class ScreenNewAndHot extends StatelessWidget {
                 end: Alignment.bottomLeft,
                 stops: [0.1, 0.5, 0.7, 0.9],
                 colors: [
-                  Color.fromARGB(255, 0, 0, 0) ?? Colors.blue,
-                  Color.fromARGB(255, 9, 3, 43) ?? Colors.blue,
-                  Color.fromARGB(255, 1, 4, 68) ?? Colors.blue,
-                  Color.fromARGB(255, 0, 0, 0) ?? Colors.blue,
+                  Color.fromARGB(255, 0, 0, 0),
+                  Color.fromARGB(255, 9, 3, 43) ,
+                  Color.fromARGB(255, 1, 4, 68) ,
+                  Color.fromARGB(255, 0, 0, 0) ,
                 ],
               ),
             ),

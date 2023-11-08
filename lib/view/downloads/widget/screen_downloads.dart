@@ -3,12 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:tmdb/controller/download_provider.dart';
 import 'package:tmdb/controller/internet_connectivity.dart';
-import 'package:tmdb/model/movie_info.dart';
-import 'package:tmdb/model/tmdb_api_response.dart';
-import 'package:tmdb/service/api_key.dart';
-import 'package:tmdb/service/apiendpoint.dart';
 
-import '../../../service/base_client.dart';
 
 class SmartDownloads extends StatelessWidget {
   const SmartDownloads({

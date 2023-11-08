@@ -17,7 +17,6 @@ class BottomNavigationWidgets extends StatelessWidget {
             },
             elevation: 0,
             type: BottomNavigationBarType.fixed,
-            // fixedColor: Colors.black,
             backgroundColor: Colors.black,
             selectedItemColor: Colors.white,
             unselectedItemColor: Colors.grey,
@@ -29,7 +28,9 @@ class BottomNavigationWidgets extends StatelessWidget {
               BottomNavigationBarItem(
                   icon: Icon(Icons.download), label: "Downloads"),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.search), label: "Search"),
+                icon: Icon(Icons.search),
+                label: "Search",
+              ),
             ],
           );
         });

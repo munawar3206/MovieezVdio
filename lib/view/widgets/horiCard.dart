@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tmdb/view/home/screen_home.dart';
+
 
 class horicard extends StatelessWidget {
   final String imageUrlFromApi;

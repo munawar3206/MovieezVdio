@@ -12,7 +12,7 @@ class NewAndHotServices{
       final movies = await apiCall(ApiEndPoints.upcoming);
       upcomingMovies = movies.results;
     } catch (error) {
-      // Handle the error here
+    
       print('Error fetching trending movies: $error');
     }
     return upcomingMovies;

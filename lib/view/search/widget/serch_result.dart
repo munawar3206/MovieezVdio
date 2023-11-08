@@ -3,11 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:tmdb/controller/internet_connectivity.dart';
 import 'package:tmdb/controller/search_result_provider.dart';
 import 'package:tmdb/model/movie_info.dart';
-// import 'package:tmdb/model/tmdb_api_response.dart';
+
 import 'package:tmdb/service/api_key.dart';
-// import 'package:tmdb/service/apiendpoint.dart';
-// import 'package:tmdb/service/base_client.dart';
-// import 'package:tmdb/view/search/widget/title.dart';
+
 import 'package:tmdb/view/widgets/mainTitle.dart';
 
 class SearchResultWidget extends StatefulWidget {

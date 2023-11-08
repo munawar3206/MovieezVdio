@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tmdb/view/downloads/widget/download.dart';
-import 'package:tmdb/view/downloads/widget/screen_downloads.dart';
-// import 'package:tmdb/view/fastlaugh/screen_fastand_laugh.dart';
+
+
 import 'package:tmdb/view/home/screen_home.dart';
 import 'package:tmdb/view/main_page/widgets/bottom_bar.dart';
 import 'package:tmdb/view/screen_newandhot/new_and_hot.dart';
@@ -10,11 +10,11 @@ import 'package:tmdb/view/search/screensearch.dart';
 class ScreenMainPage extends StatelessWidget {
   ScreenMainPage({super.key});
   final _pages = [
-    ScreenHome(),
-    ScreenNewAndHot(),
+    const ScreenHome(),
+    const ScreenNewAndHot(),
   
     DownloadScreen(),
-    ScreenSearch(),
+    const ScreenSearch(),
   ];
 
   @override
@@ -27,7 +27,7 @@ class ScreenMainPage extends StatelessWidget {
           return _pages[index];
         },
       ),
-      bottomNavigationBar: BottomNavigationWidgets(),
+      bottomNavigationBar: const BottomNavigationWidgets(),
     );
   }
 }

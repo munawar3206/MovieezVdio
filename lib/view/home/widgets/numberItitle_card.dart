@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tmdb/model/movie_info.dart';
+import 'package:tmdb/service/api_key.dart';
 import 'package:tmdb/service/apiendpoint.dart';
 import 'package:tmdb/service/base_client.dart';
 import 'package:tmdb/view/home/widgets/number_card.dart';
@@ -38,7 +39,7 @@ class NumberTitleCard extends StatelessWidget {
             return null;
           }
           String imageUrl =
-              'https://image.tmdb.org/t/p/w500${movieInfo.posterPath}?api_key=b2dee3b855c4ea705ff5dda3c0201768';
+              'https://image.tmdb.org/t/p/w500${movieInfo.posterPath}?api_key=$apikey';
           return imageUrl;
         }).toList();
 

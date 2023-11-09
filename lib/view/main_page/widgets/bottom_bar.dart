@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tmdb/consnants/color.dart';
 
 ValueNotifier<int> indexChangeNotifier = ValueNotifier(0);
 
@@ -17,8 +18,8 @@ class BottomNavigationWidgets extends StatelessWidget {
             },
             elevation: 0,
             type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.black,
-            selectedItemColor: Colors.white,
+            backgroundColor:kblack,
+            selectedItemColor:kwhite,
             unselectedItemColor: Colors.grey,
             selectedIconTheme: const IconThemeData(color: Colors.grey),
             items: const [

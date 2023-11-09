@@ -21,9 +21,7 @@ class _EveryonesWatchingWidgetState extends State<EveryonesWatchingWidget> {
     super.initState();
     Provider.of<NewAndHotProvider>(context, listen: false)
         .fetchEveryoneWatchingMovies();
-    // Provider.of<NewAndHotProvider>(context, listen: false)
-    //     .fetchEveryoneWatchingMovies();
-    Provider.of<InternetConnectivityProvider>(context, listen: false)
+       Provider.of<InternetConnectivityProvider>(context, listen: false)
         .getInternetConnectivity(context);
   }
 

@@ -8,7 +8,7 @@ import 'package:tmdb/controller/search_idle_provider.dart';
 import 'package:tmdb/controller/search_provider.dart';
 import 'package:tmdb/controller/search_result_provider.dart';
 import 'package:tmdb/controller/tvtoperate_provider.dart';
-import 'package:tmdb/splash.dart';
+import 'package:tmdb/view/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -47,15 +47,15 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
-          appBarTheme: AppBarTheme(color: Color.fromARGB(255, 0, 0, 0)),
+          appBarTheme: const AppBarTheme(color: Color.fromARGB(255, 0, 0, 0)),
           primarySwatch: Colors.blue,
-          scaffoldBackgroundColor: Color.fromARGB(255, 0, 0, 0),
+          scaffoldBackgroundColor: const Color.fromARGB(255, 0, 0, 0),
           fontFamily: GoogleFonts.agdasima().fontFamily,
           textTheme: const TextTheme(
               bodyLarge: TextStyle(color: Colors.white),
               bodyMedium: TextStyle(color: Colors.white)),
         ),
-        home: SplashScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

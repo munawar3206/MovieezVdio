@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tmdb/consnants/color.dart';
 import 'package:tmdb/view/downloads/widget/download.dart';
 
 
@@ -20,7 +21,7 @@ class ScreenMainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor:kblack,
       body: ValueListenableBuilder(
         valueListenable: indexChangeNotifier,
         builder: (context, int index, _) {

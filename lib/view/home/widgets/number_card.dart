@@ -1,8 +1,7 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
+import 'package:tmdb/consnants/color.dart';
 
-// const imageUrl =
-//     "https://www.themoviedb.org/t/p/w220_and_h330_face/aTvePCU7exLepwg5hWySjwxojQK.jpg";
 
 class NumberCard extends StatelessWidget {
   const NumberCard({super.key, required this.index, required this.imageUrl});
@@ -35,14 +34,14 @@ class NumberCard extends StatelessWidget {
           left: 20,
           top: 100,
           child: BorderedText(
-            strokeColor: const Color.fromARGB(255, 255, 255, 255),
+            strokeColor:kwhite,
             strokeWidth: 8.0,
             child: Text(
               "${index + 1}",
               style: const TextStyle(
                   color: Color.fromARGB(255, 5, 0, 62),
                   fontSize: 100,
-                  decorationColor: Color.fromARGB(255, 0, 0, 0),
+                  decorationColor:kblack,
                   decoration: TextDecoration.none),
             ),
           ),

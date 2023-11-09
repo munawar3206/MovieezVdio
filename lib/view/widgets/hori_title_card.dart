@@ -18,9 +18,9 @@ class MainTitleCard extends StatelessWidget {
       future: apiCall(apiUrl),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          Center(
+          const Center(
             child: Column(
-              children: const [
+              children: [
                 CircularProgressIndicator(
                   color: Colors.blue,
                 ),
@@ -48,7 +48,7 @@ class MainTitleCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             MainTitle(title: title),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             SizedBox(
@@ -60,7 +60,7 @@ class MainTitleCard extends StatelessWidget {
                   imageUrlFromApi: imageList[index],
                 ),
                 itemCount: 10,
-                separatorBuilder: (context, index) => SizedBox(
+                separatorBuilder: (context, index) => const SizedBox(
                   width: 15,
                 ),
               ),

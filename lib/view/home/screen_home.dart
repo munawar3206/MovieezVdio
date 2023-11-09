@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tmdb/consnants/base_url.dart';
+import 'package:tmdb/consnants/color.dart';
 import 'package:tmdb/controller/internet_connectivity.dart';
 import 'package:tmdb/service/apiendpoint.dart';
 import 'package:tmdb/view/home/widgets/big.dart';
@@ -70,7 +71,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                               "All",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 255, 255, 255),
+                                color:kwhite,
                               ),
                             ),
                           ),
@@ -83,7 +84,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                               "Movies",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 255, 255, 255),
+                                color: kwhite,
                               ),
                             ),
                           ),
@@ -96,7 +97,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                               "TV shows",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 255, 255, 255),
+                                color:kwhite,
                               ),
                             ),
                           ),
@@ -109,7 +110,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                               "Free",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 255, 255, 255),
+                                color: kwhite,
                               ),
                             ),
                           ),
@@ -138,11 +139,11 @@ class _ScreenHomeState extends State<ScreenHome> {
                       onPressed: () {},
                       icon: const Icon(
                         Icons.share,
-                        color: Colors.white,
+                        color:kwhite,
                       ),
                       label: const Text(
                         "Share",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color:kwhite),
                       ),
                     ),
                   ),
@@ -153,7 +154,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                       backgroundColor: Color.fromARGB(89, 0, 0, 0),
                       child: Icon(
                         Icons.play_arrow_outlined,
-                        color: Colors.white,
+                        color:kwhite,
                         size: 40,
                       ),
                     ),
@@ -167,7 +168,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                   apiUrl: ApiEndPoints.tvpopular,
                 ),
               ),
-              const SizedBox(height: 10),
+             k10,
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: MainTitleCard(
@@ -175,9 +176,9 @@ class _ScreenHomeState extends State<ScreenHome> {
                   apiUrl: ApiEndPoints.trendingMovies,
                 ),
               ),
-              const SizedBox(height: 10),
+              k10,
               const NumberTitleCard(),
-              const SizedBox(height: 10),
+              k10,
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: MainTitleCard(
@@ -186,7 +187,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                 ),
               ),
               bigScreen(),
-              const SizedBox(height: 10),
+              k10,
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: MainTitleCard(
@@ -194,7 +195,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                   apiUrl: ApiEndPoints.trendingMovies,
                 ),
               ),
-              const SizedBox(height: 10),
+              k10,
             ],
           ),
         ),

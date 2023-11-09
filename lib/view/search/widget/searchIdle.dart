@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tmdb/consnants/color.dart';
 import 'package:tmdb/controller/internet_connectivity.dart';
 import 'package:tmdb/controller/search_idle_provider.dart';
 import 'package:tmdb/model/movie_info.dart';
@@ -30,9 +31,7 @@ class _SearchIdleWidgetState extends State<SearchIdleWidget> {
         const MainTitle(
           title: "Top Searches",
         ),
-        SizedBox(
-          height: 20,
-        ),
+       k20,
         Expanded(
           child: Consumer<SearchidleProvider>(
             builder: (context, value, child) {

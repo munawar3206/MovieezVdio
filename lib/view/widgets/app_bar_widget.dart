@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tmdb/consnants/color.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
 class AppBarWidget extends StatelessWidget {
@@ -21,14 +22,14 @@ class AppBarWidget extends StatelessWidget {
         const Spacer(),
         const Icon(
           Icons.cast,
-          color: Colors.white,
+          color: kwhite,
         ),
         const SizedBox(
           width: 20,
         ),
         const Icon(
           Icons.person,
-          color: Colors.white,
+          color:kwhite,
         ),
         const SizedBox(
           width: 20,

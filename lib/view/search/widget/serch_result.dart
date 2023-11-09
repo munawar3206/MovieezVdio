@@ -29,7 +29,7 @@ class _SearchResultWidgetState extends State<SearchResultWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const MainTitle(title: "Movies & TV"),
-        // KHeight,
+    
         Expanded(child: Consumer<SearchResultProvider>(
           builder: (context, provider, child) {
             Provider.of<SearchResultProvider>(context, listen: false)

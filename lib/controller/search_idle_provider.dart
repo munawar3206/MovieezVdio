@@ -7,7 +7,7 @@ class SearchidleProvider extends ChangeNotifier{
   bool isLoading=true;
 
 Future fetchSearchIDLMovies()async{
-trendingMovies=await searchidleServices().fetchSearchMovies();
+trendingMovies=await SearchidleServices().fetchSearchMovies();
 isLoading=false;
 notifyListeners();
 

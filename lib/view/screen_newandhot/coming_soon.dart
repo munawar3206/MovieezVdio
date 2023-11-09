@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:tmdb/consnants/color.dart';
 import 'package:tmdb/model/movie_info.dart';
 import 'package:tmdb/service/api_key.dart';
 
@@ -27,12 +28,9 @@ class comingsoonwidget extends StatelessWidget {
             Text(
               fetchDate(movieInfo.releaseDate!),
               style: const TextStyle(
-                  fontSize: 28, color: Color.fromARGB(255, 255, 255, 255)),
+                  fontSize: 28, color:kwhite),
             ),
-            // Text(
-            //   fetchDate(movieInfo.releaseDate!),
-            //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-            // )
+           
           ]),
         ),
         SizedBox(
@@ -58,7 +56,7 @@ class comingsoonwidget extends StatelessWidget {
                     left: 280,
                     child: Icon(
                       CupertinoIcons.volume_off,
-                      color: Color.fromARGB(255, 255, 255, 255),
+                      color:kwhite,
                     ),
                   )
                 ],
@@ -95,27 +93,14 @@ class comingsoonwidget extends StatelessWidget {
                       )
                     ],
                   ),
-                  // const Column(
-                  //   children: [
-                  //     Icon(
-                  //       Icons.notifications_none,
-                  //       color: Colors.white,
-                  //     ),
-                  //     Text(
-                  //       "Remind Me",
-                  //       style: TextStyle(
-                  //         fontSize: 10,
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
+                  
                   const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Column(
                       children: [
                         Icon(
                           Icons.info_outline,
-                          color: Colors.white,
+                          color:kwhite,
                         ),
                         Text(
                           "Info",
@@ -128,9 +113,7 @@ class comingsoonwidget extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 10,
-              ),
+             k10,
               Text(
                 movieInfo.overview,
                 style: const TextStyle(

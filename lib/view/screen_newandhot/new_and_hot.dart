@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tmdb/consnants/color.dart';
 
 import 'package:tmdb/view/screen_newandhot/coming_soon_widget.dart';
 
@@ -30,14 +31,14 @@ class ScreenNewAndHot extends StatelessWidget {
               actions: const [
                 Icon(
                   Icons.cast,
-                  color: Colors.white,
+                  color:kwhite,
                 ),
                 SizedBox(
                   width: 20,
                 ),
                 Icon(
                   Icons.person,
-                  color: Colors.white,
+                  color: kwhite,
                 ),
                 SizedBox(
                   width: 20,
@@ -45,12 +46,12 @@ class ScreenNewAndHot extends StatelessWidget {
               ],
               bottom: TabBar(
                   isScrollable: true,
-                  unselectedLabelColor: Colors.white,
+                  unselectedLabelColor:kwhite,
                   labelColor: Colors.black,
                   labelStyle: const TextStyle(
                       fontSize: 16, fontWeight: FontWeight.bold),
                   indicator: BoxDecoration(
-                      color: Colors.white,
+                      color:kwhite,
                       borderRadius: BorderRadius.circular(30)),
                   tabs: const [
                     Tab(
@@ -82,7 +83,8 @@ class ScreenNewAndHot extends StatelessWidget {
                 _buildEveryonesWatching(),
               ],
             ),
-          )),
+          )
+          ),
     );
   }
 }

@@ -10,8 +10,6 @@ Future<dynamic> apiCall(String url) async {
     Map<String,dynamic>data=jsonDecode(response.body) as Map<String,dynamic>;
     TMDBApiResponseModel tmdbApiResponse=TMDBApiResponseModel.fromjson(data);
     return tmdbApiResponse;
-
-
   }
   return;
 }

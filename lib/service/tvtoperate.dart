@@ -12,7 +12,7 @@ class TVTopRateServices{
       final movies = await apiCall(ApiEndPoints.tvtoprate);
       tvtoprate = movies.results;
     } catch (error) {
-      // Handle the error here
+   
       print('Error fetching trending movies: $error');
     }
     return tvtoprate;

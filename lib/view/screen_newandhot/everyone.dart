@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tmdb/consnants/color.dart';
 import 'package:tmdb/model/movie_info.dart';
 import 'package:tmdb/service/api_key.dart';
 
@@ -11,9 +12,7 @@ class Everyonewatching extends StatelessWidget {
         'https://image.tmdb.org/t/p/w500${movieInfo.posterPath}?api_key=$apikey';
     return Column(
       children: [
-        const SizedBox(
-          height: 10,
-        ),
+       k10,
         SizedBox(
           height: 200,
           width: double.infinity,
@@ -35,9 +34,7 @@ class Everyonewatching extends StatelessWidget {
             )
           ]),
         ),
-        const SizedBox(
-          height: 10,
-        ),
+       k10,
         Padding(
           padding: EdgeInsets.all(18.0),
           child: Column(
@@ -56,13 +53,11 @@ class Everyonewatching extends StatelessWidget {
                   IconButton(
                       onPressed: () {},
                       icon: Icon(Icons.share),
-                      color: Color.fromARGB(255, 255, 255, 255))
+                      color: kwhite)
                 ],
               ),
               Text(movieInfo.releaseDate ?? ""),
-              const SizedBox(
-                height: 10,
-              ),
+            k10,
               Text(movieInfo.overview),
             ],
           ),

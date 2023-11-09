@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:tmdb/consnants/color.dart';
 import 'package:tmdb/controller/download_provider.dart';
 import 'package:tmdb/controller/internet_connectivity.dart';
 
@@ -16,7 +17,7 @@ class SmartDownloads extends StatelessWidget {
       children: [
         Icon(
           Icons.download_rounded,
-          color: Colors.white,
+          color:kwhite,
         ),
         SizedBox(
           width: 5,
@@ -54,7 +55,7 @@ class _CenterSectionState extends State<CenterSection> {
           "Introducing Downloads for you",
           textAlign: TextAlign.center,
           style: TextStyle(
-              color: Colors.white, fontSize: 23, fontWeight: FontWeight.bold),
+              color:kwhite, fontSize: 23, fontWeight: FontWeight.bold),
         ),
         SizedBox(
           height: 10,
@@ -148,12 +149,12 @@ class BottomSection extends StatelessWidget {
         SizedBox(
           width: 450,
           child: MaterialButton(
-            color: Color.fromARGB(255, 255, 255, 255),
+            color:kwhite,
             onPressed: () {},
             child: const Text(
               "Downloads",
               style: TextStyle(
-                  color: Color.fromARGB(255, 0, 0, 0),
+                  color:kblack,
                   fontSize: 25,
                   fontWeight: FontWeight.bold),
             ),
@@ -167,7 +168,7 @@ class BottomSection extends StatelessWidget {
             child: const Text(
               "Top Suggestions For you",
               style: TextStyle(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color:kwhite,
                   fontSize: 15,
                   fontWeight: FontWeight.bold),
             ),
